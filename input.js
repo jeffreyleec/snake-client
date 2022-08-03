@@ -1,26 +1,49 @@
 let connection;
-const handleUserInput = function (key) {
+let currentIntervalID;
 
-  if (key === 'w') {
-    connection.write("Move: up")
+const handleUserInput = function (data) {
+  if (data === '\u0003') {
+    process.stdout.write("You have quit the game ! \n");
+    process.exit()
   }
 
-  if (key === 'a') {
-    connection.write("Move: left")
+  if (data === 'b') {
+    connection.write("Say: whoisblue");
+    
   }
 
-  if (key === 's') {
-    connection.write("Move: down")
+
+ 
+
+  if (data === 'w') {
+    clearInterval(currentIntervalID);
+    currentIntervalID = setInterval(() => {
+      connection.write("Move: up");
+    }, 75);
+
+  } else if(data === 'a') {
+    clearInterval(currentIntervalID);
+    currentIntervalID = setInterval(() => {
+      connection.write("Move: left");
+    }, 75);
+
+  } else if(data === 's') {
+
+    clearInterval(currentIntervalID);
+    currentIntervalID = setInterval(() => {
+      connection.write("Move: down");
+    }, 75);
+
+  } else if(data === 'd') {
+    clearInterval(currentIntervalID);
+    currentIntervalID = setInterval(() => {
+      connection.write("Move: right");
+    }, 75);
   }
 
-  if (key === 'd') {
-    connection.write("Move: right")
-  }
 
-  if (key === '\u0003') {
-    console.log("Thanks for using me, ciao!")
-    connection.exit();
-  }
+
+
 }
 
 

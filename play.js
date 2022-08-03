@@ -7,9 +7,4 @@ console.log("Connecting ...");
 
 
 
-
-
-
-
-
 setupInput(connect());
