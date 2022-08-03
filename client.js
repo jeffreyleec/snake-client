@@ -9,28 +9,91 @@ const connect = function () {
 
   conn.on("connect", () => {
     console.log('Successfully connected to game server');
+    conn.write("Name: Jef");
+
+    // setTimeout(() => {
+    //   conn.write("Move: up");;
+    // }, 1000)
+
+    // setTimeout(() => {
+    //   conn.write("Move: up");;
+    // }, 2000)
+
+    // setTimeout(() => {
+    //   conn.write("Move: up");;
+    // }, 5000)
+
+    // setTimeout(() => {
+    //   conn.write("Move: right");;
+    // }, 7000)
+
+    // setTimeout(() => {
+    //   conn.write("Move: right");;
+    // }, 9000)
+
+
+
+
+
+  
   });
 
 
   conn.setEncoding("utf8"); // interpret data as text
-  conn.on("data", (data) => {
-  console.log("Name: JJJ", data);
-  //client.write("Name:JJJ");
-});
-    
-  
+  // conn.on("data", (data) => {
+  //console.log("Name: JJJ", data);
 
+  conn.on("data", (key) => {
+    conn.setEncoding("utf8");
+    if (key === '\u0038') { //letter b
+      //process.stdin.write('"Move: up"');   
+      //console.log("Move: up", data)
+      conn.write("Move: up")
+    }
 
+    if (key === '\u0040') { //letter b
+      //process.stdout.write('"Move: down"');  
+      //console.log("Move: down", data)
+      conn.write("Move: down")
+    }
 
-  // interpret incoming data as text
-  //conn.setEncoding("utf8");
+    if (key === '\u0037') { //letter b
+      //process.stdout.write('"Move: left"');  
+      //console.log("Move: left", data) 
+      conn.write("Move: left")
+    }
 
-  conn.on("data", (data) => {
-    console.log(data.toString());
+    if (key === '\u0039') { //letter b
+      //process.stdout.write('"Move: right"');  
+      //console.log("Move: right", data)
+      conn.write("Move: right")
+    }
+
   });
 
 
-  return conn;
+
+
+  //client.write("Name:JJJ");
+
+
+
+
+
+
+
+
+
+
+// interpret incoming data as text
+//conn.setEncoding("utf8");
+
+conn.on("data", (data) => {
+  console.log(data.toString());
+});
+
+
+return conn;
 };
 
 
