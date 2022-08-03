@@ -30,9 +30,6 @@ const connect = function () {
     // setTimeout(() => {
     //   conn.write("Move: right");;
     // }, 9000)
-
-    
-  
   });
 
   
